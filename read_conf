@@ -1,0 +1,11 @@
+def read_configuration_file(filename):
+    config = pd.read_excel(io=filename,
+                      header = None,
+                      names = ["TipologiaVariabile","ValoreVariabile"],
+                          engine="openpyxl")
+    email = config[config["TipologiaVariabile"]=="Email"]["ValoreVariabile"][0]
+    path = config[config["TipologiaVariabile"]=="Path"]["ValoreVariabile"][1]
+    blastn_exe = config[config["TipologiaVariabile"]=="blastn_exe"]["ValoreVariabile"][2]
+    mafft_exe = config[config["TipologiaVariabile"]=="mafft_exe"]["ValoreVariabile"][3]
+    iqtree = config[config["TipologiaVariabile"]=="iqtree"]["ValoreVariabile"][4]
+    return [email, path, blastn_exe, mafft_exe, iqtree]    
